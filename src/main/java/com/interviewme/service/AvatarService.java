@@ -1,4 +1,8 @@
 package com.interviewme.service;
 
-public class AvatarService {
+public interface AvatarService {
+    void initializeAvatar(String sessionId);
+    void generateResponse(String sessionId, String userInput);
+    void updateAvatarExpression(String sessionId, String emotion);
+    void closeAvatar(String sessionId);
 }
