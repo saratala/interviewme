@@ -7,6 +7,7 @@ import com.interviewme.repository.InterviewSessionRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -44,7 +45,9 @@ public class InterviewServiceImpl implements InterviewService {
         Participant participant = new Participant(participantName, participantEmail);
         InterviewSession session = new InterviewSession();
         session.setParticipant(participant);
-        // If there's a bidirectional relationship
+        session.setId(UUID.randomUUID()); // Explicitly set UUID
+        session.setStartTime(Instant.now()); // Set start time
+        session.setStatus(InterviewStatus.CREATED); // Set initial status
         return sessionRepository.save(session);
     }
 
@@ -88,8 +91,9 @@ public class InterviewServiceImpl implements InterviewService {
         if (session.getStatus() != InterviewStatus.STARTED) {
             throw new IllegalStateException("Interview session is not active");
         }
-        // Process audio data and generate avatar response
-        avatarService.generateResponse(sessionId, new String(audioData));
+        // Use platform's default charset to match test expectations
+        String audioText = new String(audioData);
+        avatarService.generateResponse(sessionId, audioText);
     }
 
     /**

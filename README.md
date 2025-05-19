@@ -46,23 +46,6 @@ cd interviewme
 ```
 The backend will start on `http://localhost:8080`
 
-### Frontend Setup
-1. Navigate to the frontend directory:
-```bash
-cd frontend
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Start the development server:
-```bash
-npm start
-```
-The frontend will be available at `http://localhost:3000`
-
 ## Development
 
 ### Backend Structure
@@ -71,12 +54,6 @@ The frontend will be available at `http://localhost:3000`
 - `service/` - Business logic
 - `domain/` - Data models
 - `repository/` - Data access layer
-
-### Frontend Structure
-- `src/components/` - React components
-- `src/context/` - State management
-- `src/services/` - API calls
-- `src/utils/` - Utility functions
 
 ## Deployment
 
